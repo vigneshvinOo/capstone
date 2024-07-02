@@ -1,7 +1,7 @@
-pipeline{
+pipeline {
     agent any
     stages {
-        stage("build&push"?) {
+        stage("build&push") {
             steps{
                 script {
                     sh 'chmod +x build.sh'
