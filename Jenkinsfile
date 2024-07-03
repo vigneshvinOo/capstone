@@ -1,18 +1,18 @@
 pipeline {
     agent any
     stages {
-        stage("build&push") {
-            steps{
+        stage('Build and Push') {
+            steps {
                 script {
                     sh 'chmod +x build.sh'
                     sh './build.sh'
-                    docker login -u vino0123 -p Jun!199708
-                    docker push vino0123/dev
+                    sh 'docker login -u vino0123 -p Jun!199708'
+                    sh 'docker build -t vino0123/dev .'
+                    sh 'docker push vino0123/dev'
+                    sh 'chmod +x deploy.sh'
                     sh './deploy.sh'
-
                 }
-   
             }
         }  
     }
-} 
+}
